@@ -13,4 +13,6 @@ public data class Store(
   public val publishedProductCount: Int = 0,
   public val created: OffsetDateTime = OffsetDateTime.now(),
   public val updated: OffsetDateTime = OffsetDateTime.now(),
+  public val suspended: OffsetDateTime? = null,
+  public val status: String = "",
 )

@@ -20,6 +20,7 @@ import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
 import com.wutsi.marketplace.access.dto.UpdateProductStatusRequest
+import com.wutsi.marketplace.access.dto.UpdateStoreStatusRequest
 import feign.Headers
 import feign.Param
 import feign.RequestLine
@@ -51,9 +52,9 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun getStore(@Param("id") id: Long): GetStoreResponse
 
-  @RequestLine("DELETE /v1/stores/{id}")
+  @RequestLine("POST /v1/stores/{id}/status")
   @Headers(value=["Content-Type: application/json"])
-  public fun deleteStore(@Param("id") id: Long): Unit
+  public fun updateStoreStatus(@Param("id") id: Long, request: UpdateStoreStatusRequest): Unit
 
   @RequestLine("POST /v1/products")
   @Headers(value=["Content-Type: application/json"])
