@@ -11,6 +11,9 @@ enum class ErrorURN(val urn: String) {
 
     PRODUCT_NOT_FOUND("urn:wutsi:error:marketplace-access:product-not-found"),
     PRODUCT_DELETED("urn:wutsi:error:marketplace-access:product-deleted"),
+    PRODUCT_NOT_AVAILABLE("urn:wutsi:error:marketplace-access:product-not-available"),
+
+    RESERVATION_NOT_FOUND("urn:wutsi:error:marketplace-access:reservation-not-found"),
 
     STATUS_NOT_VALID("urn:wutsi:error:marketplace-access:status-not-valid"),
 

@@ -1,9 +1,12 @@
 package com.wutsi.marketplace.access
 
+import com.wutsi.marketplace.access.dto.CheckProductAvailabilityRequest
 import com.wutsi.marketplace.access.dto.CreatePictureRequest
 import com.wutsi.marketplace.access.dto.CreatePictureResponse
 import com.wutsi.marketplace.access.dto.CreateProductRequest
 import com.wutsi.marketplace.access.dto.CreateProductResponse
+import com.wutsi.marketplace.access.dto.CreateReservationRequest
+import com.wutsi.marketplace.access.dto.CreateReservationResponse
 import com.wutsi.marketplace.access.dto.CreateStoreRequest
 import com.wutsi.marketplace.access.dto.CreateStoreResponse
 import com.wutsi.marketplace.access.dto.GetCategoryResponse
@@ -20,6 +23,7 @@ import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
 import com.wutsi.marketplace.access.dto.UpdateProductStatusRequest
+import com.wutsi.marketplace.access.dto.UpdateReservationStatusRequest
 import com.wutsi.marketplace.access.dto.UpdateStoreStatusRequest
 import feign.Headers
 import feign.Param
@@ -81,6 +85,10 @@ public interface MarketplaceAccessApi {
   public fun updateProductAttribute(@Param("id") id: Long, request: UpdateProductAttributeRequest):
       Unit
 
+  @RequestLine("POST /v1/products/availability")
+  @Headers(value=["Content-Type: application/json"])
+  public fun checkProductAvailability(request: CheckProductAvailabilityRequest): Unit
+
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
   public fun createPicture(request: CreatePictureRequest): CreatePictureResponse
@@ -92,4 +100,13 @@ public interface MarketplaceAccessApi {
   @RequestLine("DELETE /v1/pictures/{id}")
   @Headers(value=["Content-Type: application/json"])
   public fun deletePicture(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/reservations")
+  @Headers(value=["Content-Type: application/json"])
+  public fun createReservation(request: CreateReservationRequest): CreateReservationResponse
+
+  @RequestLine("POST /v1/reservations/{id}/status")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateReservationStatus(@Param("id") id: Long,
+      request: UpdateReservationStatusRequest): Unit
 }
