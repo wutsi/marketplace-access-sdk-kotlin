@@ -66,7 +66,7 @@ public interface MarketplaceAccessApi {
 
   @RequestLine("POST /v1/products/search")
   @Headers(value=["Content-Type: application/json"])
-  public fun searchProducts(request: SearchProductRequest): SearchProductResponse
+  public fun searchProduct(request: SearchProductRequest): SearchProductResponse
 
   @RequestLine("GET /v1/products/{id}")
   @Headers(value=["Content-Type: application/json"])
