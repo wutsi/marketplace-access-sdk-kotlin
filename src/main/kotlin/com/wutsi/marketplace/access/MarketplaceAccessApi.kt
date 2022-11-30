@@ -19,6 +19,8 @@ import com.wutsi.marketplace.access.dto.SearchPictureRequest
 import com.wutsi.marketplace.access.dto.SearchPictureResponse
 import com.wutsi.marketplace.access.dto.SearchProductRequest
 import com.wutsi.marketplace.access.dto.SearchProductResponse
+import com.wutsi.marketplace.access.dto.SearchReservationRequest
+import com.wutsi.marketplace.access.dto.SearchReservationResponse
 import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
@@ -104,6 +106,10 @@ public interface MarketplaceAccessApi {
   @RequestLine("POST /v1/reservations")
   @Headers(value=["Content-Type: application/json"])
   public fun createReservation(request: CreateReservationRequest): CreateReservationResponse
+
+  @RequestLine("POST /v1/reservations/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchReservation(request: SearchReservationRequest): SearchReservationResponse
 
   @RequestLine("POST /v1/reservations/{id}/status")
   @Headers(value=["Content-Type: application/json"])
