@@ -4,7 +4,7 @@ import java.time.OffsetDateTime
 import kotlin.String
 
 public data class UpdateProductEventRequest(
-  public val type: String = "",
+  public val provider: String = "",
   public val meetingId: String = "",
   public val meetingPassword: String? = null,
   public val starts: OffsetDateTime = OffsetDateTime.now(),
