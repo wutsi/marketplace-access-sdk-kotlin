@@ -23,4 +23,6 @@ public data class Product(
   public val status: String = "",
   public val published: OffsetDateTime? = null,
   public val store: StoreSummary = StoreSummary(),
+  public val type: String = "",
+  public val event: Event? = null,
 )

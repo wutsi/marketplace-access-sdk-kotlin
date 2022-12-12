@@ -24,6 +24,7 @@ import com.wutsi.marketplace.access.dto.SearchReservationResponse
 import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
+import com.wutsi.marketplace.access.dto.UpdateProductEventRequest
 import com.wutsi.marketplace.access.dto.UpdateProductStatusRequest
 import com.wutsi.marketplace.access.dto.UpdateReservationStatusRequest
 import com.wutsi.marketplace.access.dto.UpdateStoreStatusRequest
@@ -86,6 +87,10 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun updateProductAttribute(@Param("id") id: Long, request: UpdateProductAttributeRequest):
       Unit
+
+  @RequestLine("POST /v1/products/{id}/event")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateProductEvent(@Param("id") id: Long, request: UpdateProductEventRequest): Unit
 
   @RequestLine("POST /v1/products/availability")
   @Headers(value=["Content-Type: application/json"])
