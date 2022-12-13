@@ -15,6 +15,7 @@ import com.wutsi.marketplace.access.dto.GetStoreResponse
 import com.wutsi.marketplace.access.dto.SaveCategoryRequest
 import com.wutsi.marketplace.access.dto.SearchCategoryRequest
 import com.wutsi.marketplace.access.dto.SearchCategoryResponse
+import com.wutsi.marketplace.access.dto.SearchMeetingProviderResponse
 import com.wutsi.marketplace.access.dto.SearchPictureRequest
 import com.wutsi.marketplace.access.dto.SearchPictureResponse
 import com.wutsi.marketplace.access.dto.SearchProductRequest
@@ -62,6 +63,10 @@ public interface MarketplaceAccessApi {
   @RequestLine("POST /v1/stores/{id}/status")
   @Headers(value=["Content-Type: application/json"])
   public fun updateStoreStatus(@Param("id") id: Long, request: UpdateStoreStatusRequest): Unit
+
+  @RequestLine("POST /v1/meeting-providers/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchMeetingProvider(): SearchMeetingProviderResponse
 
   @RequestLine("POST /v1/products")
   @Headers(value=["Content-Type: application/json"])
