@@ -104,9 +104,9 @@ public interface MarketplaceAccessApi {
   public fun addProductFile(@Param("id") id: Long, request: AddProductFileRequest):
       AddProductFileResponse
 
-  @RequestLine("DELETE /v1/products/files/{id}")
+  @RequestLine("DELETE /v1/files/{id}")
   @Headers(value=["Content-Type: application/json"])
-  public fun removeProductFile(@Param("id") id: Long): Unit
+  public fun deleteFile(@Param("id") id: Long): Unit
 
   @RequestLine("POST /v1/products/availability")
   @Headers(value=["Content-Type: application/json"])
