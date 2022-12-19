@@ -1,5 +1,7 @@
 package com.wutsi.marketplace.access
 
+import com.wutsi.marketplace.access.dto.AddProductFileRequest
+import com.wutsi.marketplace.access.dto.AddProductFileResponse
 import com.wutsi.marketplace.access.dto.CheckProductAvailabilityRequest
 import com.wutsi.marketplace.access.dto.CreatePictureRequest
 import com.wutsi.marketplace.access.dto.CreatePictureResponse
@@ -96,6 +98,15 @@ public interface MarketplaceAccessApi {
   @RequestLine("POST /v1/products/{id}/event")
   @Headers(value=["Content-Type: application/json"])
   public fun updateProductEvent(@Param("id") id: Long, request: UpdateProductEventRequest): Unit
+
+  @RequestLine("POST /v1/products/{id}/files")
+  @Headers(value=["Content-Type: application/json"])
+  public fun addProductFile(@Param("id") id: Long, request: AddProductFileRequest):
+      AddProductFileResponse
+
+  @RequestLine("DELETE /v1/products/files/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun removeProductFile(@Param("id") id: Long): Unit
 
   @RequestLine("POST /v1/products/availability")
   @Headers(value=["Content-Type: application/json"])
