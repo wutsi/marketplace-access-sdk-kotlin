@@ -167,4 +167,14 @@ public interface MarketplaceAccessApi {
   @RequestLine("POST /v1/discounts/search")
   @Headers(value=["Content-Type: application/json"])
   public fun searchDiscount(request: SearchDiscountRequest): SearchDiscountResponse
+
+  @RequestLine("POST /v1/discounts/{discount-id}/products/{product-id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun addDiscountProduct(@Param("discount-id") discountId: Long, @Param("product-id")
+      productId: Long): Unit
+
+  @RequestLine("DELETE /v1/discounts/{discount-id}/products/{product-id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun removeDiscountProduct(@Param("discount-id") discountId: Long, @Param("product-id")
+      productId: Long): Unit
 }
