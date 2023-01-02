@@ -1,6 +1,8 @@
 package com.wutsi.marketplace.access
 
 import com.wutsi.marketplace.access.dto.CheckProductAvailabilityRequest
+import com.wutsi.marketplace.access.dto.CreateDiscountRequest
+import com.wutsi.marketplace.access.dto.CreateDiscountResponse
 import com.wutsi.marketplace.access.dto.CreateFileRequest
 import com.wutsi.marketplace.access.dto.CreateFileResponse
 import com.wutsi.marketplace.access.dto.CreatePictureRequest
@@ -12,20 +14,26 @@ import com.wutsi.marketplace.access.dto.CreateReservationResponse
 import com.wutsi.marketplace.access.dto.CreateStoreRequest
 import com.wutsi.marketplace.access.dto.CreateStoreResponse
 import com.wutsi.marketplace.access.dto.GetCategoryResponse
+import com.wutsi.marketplace.access.dto.GetDiscountResponse
 import com.wutsi.marketplace.access.dto.GetProductResponse
 import com.wutsi.marketplace.access.dto.GetStoreResponse
 import com.wutsi.marketplace.access.dto.SaveCategoryRequest
 import com.wutsi.marketplace.access.dto.SearchCategoryRequest
 import com.wutsi.marketplace.access.dto.SearchCategoryResponse
+import com.wutsi.marketplace.access.dto.SearchDiscountRequest
+import com.wutsi.marketplace.access.dto.SearchDiscountResponse
 import com.wutsi.marketplace.access.dto.SearchMeetingProviderResponse
 import com.wutsi.marketplace.access.dto.SearchPictureRequest
 import com.wutsi.marketplace.access.dto.SearchPictureResponse
+import com.wutsi.marketplace.access.dto.SearchProductPriceRequest
+import com.wutsi.marketplace.access.dto.SearchProductPriceResponse
 import com.wutsi.marketplace.access.dto.SearchProductRequest
 import com.wutsi.marketplace.access.dto.SearchProductResponse
 import com.wutsi.marketplace.access.dto.SearchReservationRequest
 import com.wutsi.marketplace.access.dto.SearchReservationResponse
 import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
+import com.wutsi.marketplace.access.dto.UpdateDiscountRequest
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
 import com.wutsi.marketplace.access.dto.UpdateProductEventRequest
 import com.wutsi.marketplace.access.dto.UpdateProductStatusRequest
@@ -111,6 +119,10 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun checkProductAvailability(request: CheckProductAvailabilityRequest): Unit
 
+  @RequestLine("POST /v1/products/prices")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchProductPrice(request: SearchProductPriceRequest): SearchProductPriceResponse
+
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
   public fun createPicture(request: CreatePictureRequest): CreatePictureResponse
@@ -135,4 +147,24 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun updateReservationStatus(@Param("id") id: Long,
       request: UpdateReservationStatusRequest): Unit
+
+  @RequestLine("POST /v1/discounts")
+  @Headers(value=["Content-Type: application/json"])
+  public fun createDiscount(request: CreateDiscountRequest): CreateDiscountResponse
+
+  @RequestLine("GET /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun getDiscount(@Param("id") id: Long): GetDiscountResponse
+
+  @RequestLine("POST /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateDiscount(@Param("id") id: Long, request: UpdateDiscountRequest): Unit
+
+  @RequestLine("DELETE /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun deleteDiscount(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/discounts/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchDiscount(request: SearchDiscountRequest): SearchDiscountResponse
 }
