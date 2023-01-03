@@ -33,7 +33,7 @@ import com.wutsi.marketplace.access.dto.SearchReservationRequest
 import com.wutsi.marketplace.access.dto.SearchReservationResponse
 import com.wutsi.marketplace.access.dto.SearchStoreRequest
 import com.wutsi.marketplace.access.dto.SearchStoreResponse
-import com.wutsi.marketplace.access.dto.UpdateDiscountRequest
+import com.wutsi.marketplace.access.dto.UpdateDiscountAttributeRequest
 import com.wutsi.marketplace.access.dto.UpdateProductAttributeRequest
 import com.wutsi.marketplace.access.dto.UpdateProductEventRequest
 import com.wutsi.marketplace.access.dto.UpdateProductStatusRequest
@@ -156,13 +156,14 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun getDiscount(@Param("id") id: Long): GetDiscountResponse
 
-  @RequestLine("POST /v1/discounts/{id}")
-  @Headers(value=["Content-Type: application/json"])
-  public fun updateDiscount(@Param("id") id: Long, request: UpdateDiscountRequest): Unit
-
   @RequestLine("DELETE /v1/discounts/{id}")
   @Headers(value=["Content-Type: application/json"])
   public fun deleteDiscount(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/discounts/{id}/attributes")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateDiscountAttribute(@Param("id") id: Long,
+      request: UpdateDiscountAttributeRequest): Unit
 
   @RequestLine("POST /v1/discounts/search")
   @Headers(value=["Content-Type: application/json"])
