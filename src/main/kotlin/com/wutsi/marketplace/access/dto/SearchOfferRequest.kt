@@ -3,6 +3,7 @@ package com.wutsi.marketplace.access.dto
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
+import kotlin.collections.List
 
 public data class SearchOfferRequest(
   public val storeId: Long? = null,
