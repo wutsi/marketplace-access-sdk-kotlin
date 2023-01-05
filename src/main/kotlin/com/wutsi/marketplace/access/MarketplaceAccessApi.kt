@@ -15,6 +15,7 @@ import com.wutsi.marketplace.access.dto.CreateStoreRequest
 import com.wutsi.marketplace.access.dto.CreateStoreResponse
 import com.wutsi.marketplace.access.dto.GetCategoryResponse
 import com.wutsi.marketplace.access.dto.GetDiscountResponse
+import com.wutsi.marketplace.access.dto.GetOfferResponse
 import com.wutsi.marketplace.access.dto.GetProductResponse
 import com.wutsi.marketplace.access.dto.GetStoreResponse
 import com.wutsi.marketplace.access.dto.SaveCategoryRequest
@@ -23,6 +24,8 @@ import com.wutsi.marketplace.access.dto.SearchCategoryResponse
 import com.wutsi.marketplace.access.dto.SearchDiscountRequest
 import com.wutsi.marketplace.access.dto.SearchDiscountResponse
 import com.wutsi.marketplace.access.dto.SearchMeetingProviderResponse
+import com.wutsi.marketplace.access.dto.SearchOfferRequest
+import com.wutsi.marketplace.access.dto.SearchOfferResponse
 import com.wutsi.marketplace.access.dto.SearchPictureRequest
 import com.wutsi.marketplace.access.dto.SearchPictureResponse
 import com.wutsi.marketplace.access.dto.SearchProductPriceRequest
@@ -178,4 +181,12 @@ public interface MarketplaceAccessApi {
   @Headers(value=["Content-Type: application/json"])
   public fun removeDiscountProduct(@Param("discount-id") discountId: Long, @Param("product-id")
       productId: Long): Unit
+
+  @RequestLine("POST /v1/offers/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchOffer(request: SearchOfferRequest): SearchOfferResponse
+
+  @RequestLine("GET /v1/offers/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun getOffer(@Param("id") id: Long): GetOfferResponse
 }
