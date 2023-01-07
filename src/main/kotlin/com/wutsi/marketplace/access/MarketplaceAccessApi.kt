@@ -28,8 +28,6 @@ import com.wutsi.marketplace.access.dto.SearchOfferRequest
 import com.wutsi.marketplace.access.dto.SearchOfferResponse
 import com.wutsi.marketplace.access.dto.SearchPictureRequest
 import com.wutsi.marketplace.access.dto.SearchPictureResponse
-import com.wutsi.marketplace.access.dto.SearchProductPriceRequest
-import com.wutsi.marketplace.access.dto.SearchProductPriceResponse
 import com.wutsi.marketplace.access.dto.SearchProductRequest
 import com.wutsi.marketplace.access.dto.SearchProductResponse
 import com.wutsi.marketplace.access.dto.SearchReservationRequest
@@ -121,10 +119,6 @@ public interface MarketplaceAccessApi {
   @RequestLine("POST /v1/products/availability")
   @Headers(value=["Content-Type: application/json"])
   public fun checkProductAvailability(request: CheckProductAvailabilityRequest): Unit
-
-  @RequestLine("POST /v1/products/prices")
-  @Headers(value=["Content-Type: application/json"])
-  public fun searchProductPrice(request: SearchProductPriceRequest): SearchProductPriceResponse
 
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
